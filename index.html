@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For You</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>For You — Space & Whisper</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Background bintang -->
-    <div class="stars"></div>
-    <div class="nebula"></div>
+    <!-- Audio (preload but not autoplay audible) -->
+    <audio id="bgAudio" preload="auto" loop>
+      <source src="music/sampai-jadi-abu.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
 
-    <!-- Kata-kata motivasi -->
-    <div class="center-text">
-      <h1>Kamu Hebat, Jangan Pernah Menyerah 💫</h1>
-      <p>Langkah kecil hari ini adalah pijakan besar untuk masa depanmu.</p>
+    <!-- Audio control top-right -->
+    <button id="audioControl" class="audio-btn" aria-label="Kontrol musik">
+      🔇
+    </button>
+
+    <!-- Nebula corners -->
+    <div class="nebula nebula-tl"></div>
+    <div class="nebula nebula-tr"></div>
+    <div class="nebula nebula-bl"></div>
+    <div class="nebula nebula-br"></div>
+
+    <!-- Starfield container (JS will fill many .star elements) -->
+    <div id="starField" aria-hidden="true"></div>
+
+    <!-- Center overlay with Start button -->
+    <div id="startOverlay" class="overlay">
+      <div class="overlay-content">
+        <h1 class="overlay-title">Untukmu — Tarik Napas, Lanjutkan</h1>
+        <p class="overlay-sub">Klik START untuk mendengarkan & membaca pesan</p>
+        <button id="startBtn" class="start-btn">START</button>
+      </div>
     </div>
 
-    <!-- Tombol musik -->
-    <button id="music-btn">🎵</button>
-    <audio id="bgMusic" loop>
-      <source src="lagu.mp3" type="audio/mpeg" />
-    </audio>
+    <!-- Main content: typing text -->
+    <main class="center" aria-live="polite">
+      <h1 id="heroText" class="hero-title"></h1>
+      <p id="heroSub" class="hero-sub"></p>
+    </main>
+
     <script src="script.js"></script>
   </body>
 </html>
